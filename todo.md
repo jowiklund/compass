@@ -20,26 +20,3 @@ Future:
 
 [ ] Let the user chose coworkers for the token
     - This could be used to create short lived collaboration between some coworkers and the token holder
-
-{                                            
-    "password": <correct pass>,                                           
-	"scope": {                                   
-		"clients": [                                 
-			"SynkzoneSSI"                                
-		],                                           
-		"name": "180",                               
-		"permissions": {                             
-			"Zoneeb91d7d0-d654-4591-9164-1c3b78c881ec": {
-				"access": false,                             
-				"all": false,                                
-				"create": false,                             
-				"delete": false,                             
-				"get": false,                                
-				"list": true,                                
-				"modify": false                              
-			}                                            
-		}                                            
-	},                                           
-	"tokenName": "Test",                         
-	"validity": 180                              
-}

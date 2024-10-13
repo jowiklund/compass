@@ -49,11 +49,11 @@ type NewTokenRequest struct {
 }
 
 type ZoneMember struct {
-	AccessLevel   string       `json:"accessLevel,omitempty"`
+	AccessLevel   string `json:"accessLevel,omitempty"`
 	Authorization string `json:"authorization,omitempty"`
-	DisplayName   string                       `json:"displayName,omitempty"`
-	MemberId      string                       `json:"memberId,omitempty"`
-	MemberType    string            `json:"memberType,omitempty"`
+	DisplayName   string `json:"displayName,omitempty"`
+	MemberId      string `json:"memberId,omitempty"`
+	MemberType    string `json:"memberType,omitempty"`
 }
 
 type ZoneData struct {
@@ -63,9 +63,9 @@ type ZoneData struct {
 	CurrentAccess        *ZoneMember `json:"currentAccess,omitempty"`
 	Name                 string      `json:"name,omitempty"`
 	Description          string      `json:"description,omitempty"`
-	Id                   UUID `json:"id,omitempty"`
+	Id                   UUID        `json:"id,omitempty"`
 	SsiAccessible        bool        `json:"ssiAccessible,omitempty"`
-	Type                 UUID `json:"type,omitempty"`
+	Type                 UUID        `json:"type,omitempty"`
 	TypeName             string      `json:"typeName,omitempty"`
 	WebAccessible        bool        `json:"webAccessible,omitempty"`
 }

@@ -57,28 +57,28 @@ func New() tea.Model {
 }
 
 type LogonRequest struct {
-	AcceptSessions *bool `json:"acceptSessions,omitempty"`
-	AutoLogon *bool `json:"autoLogon,omitempty"`
-	LogonSessionId *string `json:"logonSessionId,omitempty"`
-	OrganizationName *string `json:"organizationName,omitempty"`
-	Password *[]string `json:"password,omitempty"`
-	PasswordAsString *string `json:"passwordAsString,omitempty"`
-	SavePassword *bool `json:"savePassword,omitempty"`
-	Scope *scope.SPScope `json:"scope,omitempty"`
-	SetCookie *bool `json:"setCookie,omitempty"`
-	Timeout *int64 `json:"timeout,omitempty"`
-	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty"`
-	Token *string `json:"token,omitempty"`
-	Username *string `json:"username,omitempty"`
-	VerificationCode *string `json:"verificationCode,omitempty"`
+	AcceptSessions   *bool          `json:"acceptSessions,omitempty"`
+	AutoLogon        *bool          `json:"autoLogon,omitempty"`
+	LogonSessionId   *string        `json:"logonSessionId,omitempty"`
+	OrganizationName *string        `json:"organizationName,omitempty"`
+	Password         *[]string      `json:"password,omitempty"`
+	PasswordAsString *string        `json:"passwordAsString,omitempty"`
+	SavePassword     *bool          `json:"savePassword,omitempty"`
+	Scope            *scope.SPScope `json:"scope,omitempty"`
+	SetCookie        *bool          `json:"setCookie,omitempty"`
+	Timeout          *int64         `json:"timeout,omitempty"`
+	TimeoutInSeconds *int64         `json:"timeoutInSeconds,omitempty"`
+	Token            *string        `json:"token,omitempty"`
+	Username         *string        `json:"username,omitempty"`
+	VerificationCode *string        `json:"verificationCode,omitempty"`
 }
 
 type LogonResult struct {
-	ExpiresInMillis *int64 `json:"expiresInMillis,omitempty"`
-	IdpURI *string `json:"idpURI,omitempty"`
-	LogonOK bool `json:"logonOK"`
-	PasswordChangeIsRequired *bool `json:"passwordChangeIsRequired,omitempty"`
-	SessionId *string `json:"sessionId,omitempty"`
+	ExpiresInMillis          *int64  `json:"expiresInMillis,omitempty"`
+	IdpURI                   *string `json:"idpURI,omitempty"`
+	LogonOK                  bool    `json:"logonOK"`
+	PasswordChangeIsRequired *bool   `json:"passwordChangeIsRequired,omitempty"`
+	SessionId                *string `json:"sessionId,omitempty"`
 }
 
 func getSession(m Model) tea.Cmd {
@@ -156,12 +156,12 @@ func getInputs(m Model) tea.Cmd {
 
 type AuthReq byte
 type AuthorizationRequirements struct {
-	CanSavePassword *bool `json:"canSavePassword,omitempty"`
+	CanSavePassword  *bool   `json:"canSavePassword,omitempty"`
 	OrganizationName *string `json:"organizationName,omitempty"`
-	OtpRequired *bool `json:"otpRequired,omitempty"`
-	OtpType *string `json:"otpType,omitempty"`
-	PasswordRequired *bool `json:"passwordRequired,omitempty"`
-	WorldName *string `json:"worldName,omitempty"`
+	OtpRequired      *bool   `json:"otpRequired,omitempty"`
+	OtpType          *string `json:"otpType,omitempty"`
+	PasswordRequired *bool   `json:"passwordRequired,omitempty"`
+	WorldName        *string `json:"worldName,omitempty"`
 }
 
 func getAuthReq(m Model) tea.Cmd {
