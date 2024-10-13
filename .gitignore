@@ -1,0 +1,16 @@
+.compassrc
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+*.test
+
+*.out
+compass
+
+go.work
+go.work.sum
+
+.env
