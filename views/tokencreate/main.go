@@ -17,6 +17,7 @@ type InputName string
 const (
 	INPUT_PASS     InputName = "PASSWORD"
 	INPUT_NAME     InputName = "NAME"
+	INPUT_DESC     InputName = "DESC"
 	INPUT_VALIDITY InputName = "VALIDITY"
 )
 
@@ -41,6 +42,13 @@ func New(c client.ClientInterface, perms zoneselector.PermissionCollection) tea.
 		name:  INPUT_NAME,
 	}
 
+	descInput := textinput.New()
+	descInput.Prompt = "Description: "
+	desc := Input{
+		model: descInput,
+		name:  INPUT_DESC,
+	}
+
 	validityInput := textinput.New()
 	validityInput.Prompt = "Validity (seconds): "
 	validityInput.Validate = intValidator
@@ -57,7 +65,7 @@ func New(c client.ClientInterface, perms zoneselector.PermissionCollection) tea.
 		name:  INPUT_PASS,
 	}
 
-	inputs := []Input{name, validity, pass}
+	inputs := []Input{name, desc, validity, pass}
 
 	return Model{
 		client:        c,
@@ -88,11 +96,13 @@ func createToken(m Model) tea.Cmd {
 			val := input.model.Value()
 			tokenData.TokenName = &val
 			s.Name = val
+		case INPUT_DESC:
+			val := input.model.Value()
+			s.Description = val
 		case INPUT_VALIDITY:
 			val := input.model.Value()
 			num, _ := strconv.ParseInt(val, 10, 64)
 			tokenData.Validity = &num
-			s.Name = val
 		}
 	}
 

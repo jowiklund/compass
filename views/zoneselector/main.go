@@ -48,7 +48,7 @@ func New(zones []scope.ZoneData) Model {
 }
 
 func permissionZoneName(z scope.ZoneData) string {
-	return "Zone" + z.Id.String()
+	return "Zone=" + z.Id.String()
 }
 
 func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
@@ -133,8 +133,6 @@ func (m Model) View() string {
 	return lipgloss.JoinVertical(
 		lipgloss.Top,
 		doc.String(),
-		fmt.Sprintf("You have %d permissions added", len(m.permissions)),
-		fmt.Sprintf("%+v", m.permissions),
 	)
 }
 
