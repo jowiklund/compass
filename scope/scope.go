@@ -14,6 +14,7 @@ func ConfHasOpt(conf byte, compare byte) bool {
 	return conf&compare != 0
 }
 
+
 func CreatePermission(conf byte) Permission {
 	data := Permission{
 		All:    ConfHasOpt(conf, S_ALL),

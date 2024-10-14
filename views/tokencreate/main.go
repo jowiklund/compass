@@ -108,7 +108,7 @@ func createToken(m Model) tea.Cmd {
 
 	tokenData.Scope = s
 
-	tokenRes := scope.TokenInformation{}
+	tokenRes := scope.TokenResult{}
 	err := m.client.Post("/tokens", tokenData, &tokenRes)
 	if err != nil {
 		return func() tea.Msg {

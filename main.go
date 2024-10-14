@@ -8,11 +8,13 @@ import (
 	"compass/views/login"
 	"compass/views/tokencreate"
 	"compass/views/zoneselector"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"log"
 	"os"
 	"strings"
+	"time"
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
@@ -85,8 +87,18 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	}
 
 	switch msg := msg.(type) {
-	case scope.TokenInformation:
-		m.output = append(m.output, fmt.Sprintf("%+v", msg))
+	case scope.TokenResult:
+		fileName := "token~"+time.Now().Format(time.RFC3339)+".json"
+		file, err := os.OpenFile(fileName, os.O_CREATE|os.O_WRONLY, 0600)
+		if err != nil {
+			m.output = append(m.output, fmt.Sprintf("Error: %+v", err))
+		}
+		jsonData, jerr := json.MarshalIndent(msg, "", "\t")
+		if jerr != nil {
+			m.output = append(m.output, fmt.Sprintf("Error: %+v", jerr))
+		}
+		file.Write(jsonData)
+		m.output = append(m.output, fmt.Sprintf("Wrote token to %s", fileName))
 
 	case zoneselector.PermissionCollection:
 		m.tokenForm = tokencreate.New(m.client, msg)

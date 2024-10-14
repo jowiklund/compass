@@ -26,6 +26,12 @@ type TokenInformation struct {
 	ValidUntil       *string  `json:"validUntil,omitempty"`
 }
 
+type TokenResult struct {
+	Token string `json:"token"`
+	ExpiresAt string `json:"expiresAt"`
+	Id string `json:"id"`
+}
+
 type Client string
 
 const (

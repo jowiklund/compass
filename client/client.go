@@ -50,7 +50,7 @@ func (c *Client) Get(endpoint string, rv any) error {
 		h()
 	}
 
-	if res.StatusCode > 299 {
+	if res.StatusCode >= 300 {
 		return fmt.Errorf("%s :: %+v", res.Status, string(resBody[:]))
 	}
 
@@ -97,7 +97,7 @@ func (c *Client) Post(endpoint string, data any, rv any) error {
 		h()
 	}
 
-	if res.StatusCode != 200 {
+	if res.StatusCode >= 300 {
 		return fmt.Errorf("%s :: %+v", res.Status, string(resBody[:]))
 	}
 
