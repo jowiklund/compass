@@ -40,9 +40,7 @@ type Model struct {
 }
 
 func New() tea.Model {
-	s := session.New(
-		session.WithStore(session.FileStorage(global.CONFIG_FILE)),
-	)
+	s := session.New()
 
 	c := client.NewClient(global.SSIHost,
 		client.WithHeader("Content-Type", "application/json"),
